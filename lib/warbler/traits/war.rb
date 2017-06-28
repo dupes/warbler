@@ -56,15 +56,27 @@ module Warbler
         c
       end
 
-      def default_webinf_files
-        webxml = if File.exist?("config/web.xml")
-          "config/web.xml"
-        elsif File.exist?("config/web.xml.erb")
-          "config/web.xml.erb"
-        else
-          "#{WARBLER_HOME}/web.xml.erb"
+      def config_exists(file_names)
+
+        files = []
+
+        file_names.each do |file_name|
+          if File.exist?("config/#{file_name}")
+            files << "config/#{file_name}"
+          elsif File.exist?("config/#{file_name}.erb")
+            files << "config/#{file_name}.erb"
+          elsif File.exists?("#{WARBLER_HOME}/#{file_name}.erb")
+            files << "#{WARBLER_HOME}/#{file_name}.erb"
+          else
+            files << "#{WARBLER_HOME}/#{file_name}"
+          end
         end
-        FileList[webxml]
+
+        files
+      end
+
+      def default_webinf_files
+        FileList[config_exists(['web.xml', 'webserver.xml'])]
       end
 
       def default_jar_files
