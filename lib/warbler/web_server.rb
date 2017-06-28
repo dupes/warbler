@@ -95,13 +95,6 @@ module Warbler
 
     def add(jar)
       super
-      jar.files["WEB-INF/webserver.xml"] ||= StringIO.new(<<-CONFIG)
-<?xml version="1.0"?>
-<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
-
-<Configure id="Server" class="org.eclipse.jetty.server.Server">
-</Configure>
-CONFIG
 
       jar.files["WEB-INF/webserver.properties"] = StringIO.new(<<-PROPS)
 mainclass = org.eclipse.jetty.runner.Runner
