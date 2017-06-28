@@ -14,3 +14,6 @@ log
 integration/**/*.iml
 build.log
 .ruby-version
+lib/warbler_jar.jar
+pom.warbler.gemspec.xml
+
