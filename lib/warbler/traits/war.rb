@@ -118,7 +118,7 @@ module Warbler
           manifest = Warbler::Jar::DEFAULT_MANIFEST.chomp + "Main-Class: #{main_class}\n"
           jar.files['META-INF/MANIFEST.MF'] = StringIO.new(manifest)
         end
-        [ 'JarMain', 'WarMain', main_class ].uniq.each do |klass|
+        [ 'JarMain', 'WarMain', 'ExecJruby', main_class ].uniq.each do |klass|
           jar.files["#{klass}.class"] = jar.entry_in_jar(WARBLER_JAR, "#{klass}.class")
         end
       end
