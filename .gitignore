@@ -4,7 +4,6 @@ doc
 .bundle
 nbproject
 target
-Gemfile.lock
 .idea
 warbler.iml
 warbler.iws
@@ -13,7 +12,6 @@ warbler-*.gem
 log
 integration/**/*.iml
 build.log
-.ruby-version
 lib/warbler_jar.jar
 pom.warbler.gemspec.xml
 
